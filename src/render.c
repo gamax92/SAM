@@ -71,7 +71,7 @@ void Output(int index, unsigned char A)
 	oldtimetableindex = index;
 	// write a little bit in advance
 	for(k=0; k<5; k++)
-		buffer[bufferpos/50 + k] = (A & 15)*16;
+		buffer[bufferpos/50 + k] = A;
 }
 
 
@@ -239,13 +239,13 @@ pos48280:
 		X = mem53;
 		//mem[54296] = X;
         // output the byte
-		Output(1, X);
+		Output(1, X*16);
 		// if X != 0, exit loop
 		if(X != 0) goto pos48296;
 	}
 	
 	// output a 5 for the on bit
-	Output(2, 5);
+	Output(2, 5*16);
 
 	//48295: NOP
 pos48296:
@@ -302,13 +302,13 @@ pos48315:
 			{
                 // if bit set, output 26
 				X = 26;
-				Output(3, X);
+				Output(3, X*16);
 			} else
 			{
 				//timetable 4
 				// bit is not set, output a 6
 				X=6;
-				Output(4, X);
+				Output(4, X*16);
 			}
 
 			mem56--;
@@ -812,7 +812,7 @@ if (debug)
 			if ((mem56+multtable[sinus[phase2] | amplitude2[Y]] ) > 255) carry = 1;
 			mem56 += multtable[sinus[phase2] | amplitude2[Y]];
 			A = mem56 + multtable[rectangle[phase3] | amplitude3[Y]] + (carry?1:0);
-			A = ((A + 136) & 255) >> 4; //there must be also a carry
+			A = A ^ 128; //there must be also a carry
 			//mem[54296] = A;
 			
 			// output the accumulated value
