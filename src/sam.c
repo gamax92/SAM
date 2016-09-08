@@ -59,7 +59,7 @@ void SetSpeed(unsigned char _speed) {speed = _speed;};
 void SetPitch(unsigned char _pitch) {pitch = _pitch;};
 void SetMouth(unsigned char _mouth) {mouth = _mouth;};
 void SetThroat(unsigned char _throat) {throat = _throat;};
-void EnableSingmode() {singmode = 1;};
+void SetSingmode(unsigned char _singmode) {singmode = _singmode;};
 char* GetBuffer(){return buffer;};
 int GetBufferLength(){return bufferpos;};
 

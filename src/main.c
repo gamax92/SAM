@@ -180,7 +180,7 @@ int main(int argc, char **argv)
 			} else
 			if (strcmp(&argv[i][1], "sing")==0)
 			{
-				EnableSingmode();
+				SetSingmode(1);
 			} else
 			if (strcmp(&argv[i][1], "phonetic")==0)
 			{
