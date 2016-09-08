@@ -92,6 +92,8 @@ void Init()
 
 	bufferpos = 0;
 	// TODO, check for free the memory, 10 seconds of output should be more than enough
+	if (buffer)
+		free(buffer);
 	buffer = malloc(22050*10); 
 
 	/*
